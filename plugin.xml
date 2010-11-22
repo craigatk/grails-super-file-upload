@@ -1,0 +1,16 @@
+<plugin name='super-file-upload' version='0.4' grailsVersion='1.1 &gt; *'>
+  <author>Peter Delahunty</author>
+  <authorEmail>peter.delahunty@solution51.com</authorEmail>
+  <title>Super file upload</title>
+  <description>\
+This plugin provides a file upload based on flash complete with a progress bar. This enabled you to style your file upload.
+</description>
+  <documentation>http://grails.org/SuperFileUpload+Plugin</documentation>
+  <resources>
+    <resource>UrlMappings</resource>
+    <resource>com.solution51.sfu.SfuRecieverController</resource>
+    <resource>com.solution51.sfu.SuperFileUploadService</resource>
+    <resource>com.solution51.sfu.SuperFileUploadTagLib</resource>
+  </resources>
+  <dependencies />
+</plugin>
