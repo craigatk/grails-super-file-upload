@@ -118,16 +118,6 @@ function uploadComplete(file) {
 			var uploadForm = document.getElementById(this.customSettings.formId);
             uploadForm.submit();
 		}
-        /*if (this.customSettings.upload_successful) {
-            try {
-                var uploadForm = document.getElementById(this.customSettings.formId);
-                uploadForm.submit();
-            } catch (ex) {
-                alert("Error submitting form");
-            }
-        } else {
-            alert("There was a problem with the upload.\nThe server did not accept it.");
-        }*/
     } catch (e) {
     }
 }

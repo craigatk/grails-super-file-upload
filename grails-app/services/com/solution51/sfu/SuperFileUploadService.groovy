@@ -50,7 +50,7 @@ class SuperFileUploadService {
         for (filenamePair in uploadFilenamePairs) {
             String[] filenameParts = filenamePair.split(":")
 
-            uploadedFiles.add(new UploadedFile(savedFileName: filenameParts[0], originalFileName: filenameParts[1]))
+            uploadedFiles.add(new UploadedFile(savedFile: getTempUploadFile(filenameParts[0]), originalFileName: filenameParts[1]))
         }
 
         return uploadedFiles
