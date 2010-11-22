@@ -3,10 +3,10 @@
     <title>Multi-File Upload</title>
     <meta name="layout" content="main" />
 
-    <sfu:generateConfiguration fileSize="30" form="bookForm" buttonImageFile="/ButtonNoText_61x22.png" buttonWidth="61" buttonHeight="22" buttonText="Browse" buttonTextLeftPadding="8" buttonTextTopPadding="1" fileUploadLimit="30"/>
+    <sfu:generateConfiguration fileSize="30" form="uploadForm" buttonImageFile="/ButtonNoText_61x22.png" buttonWidth="61" buttonHeight="22" buttonText="Browse" buttonTextLeftPadding="8" buttonTextTopPadding="1" fileUploadLimit="30" fileTypes="*.htm;*.html" fileTypesDescription="HTML Files" />
   </head>
   <body>
-    <form id="bookForm" name="bookForm" action="upload" onsubmit="return sfuSubmitForm(this);">
+    <form id="uploadForm" name="uploadForm" action="upload" onsubmit="return sfuSubmitForm(this);">
       Choose file: <sfu:fileUploadControl/>
 
       Progress: <sfu:fileUploadProgressBar/> <br/>
