@@ -1,6 +1,7 @@
 package com.solution51.sfu
 
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
+import com.solutions51.sfu.UploadedFile
 
 /* Copyright 2009-2011 the original author or authors.
  *
@@ -37,6 +38,22 @@ class SuperFileUploadService {
 
     File getTempUploadDirectory() {
         return new File(getTempUploadDirectoryConfig())
+    }
+
+    List<UploadedFile> getUploadedFiles(params) {
+        String uploadFilenameLine = params.uploadedFileId
+
+        String[] uploadFilenamePairs = uploadFilenameLine.split(";")
+
+        List<UploadedFile> uploadedFiles = new ArrayList<UploadedFile>()
+
+        for (filenamePair in uploadFilenamePairs) {
+            String[] filenameParts = filenamePair.split(":")
+
+            uploadedFiles.add(new UploadedFile(savedFileName: filenameParts[0], originalFileName: filenameParts[1]))
+        }
+
+        return uploadedFiles
     }
 
     private String getTempUploadDirectoryConfig() {

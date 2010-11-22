@@ -9,6 +9,7 @@ This plugin provides a file upload based on flash complete with a progress bar. 
   <resources>
     <resource>UrlMappings</resource>
     <resource>com.solution51.sfu.SfuRecieverController</resource>
+    <resource>com.solution51.sfu.SfuUploadController</resource>
     <resource>com.solution51.sfu.SuperFileUploadService</resource>
     <resource>com.solution51.sfu.SuperFileUploadTagLib</resource>
   </resources>

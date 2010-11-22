@@ -60,6 +60,10 @@ class SuperFileUploadTagLib {
         def buttonWidth = (attrs.buttonWidth) ?: "61"
         def buttonHeight = (attrs.buttonHeight) ?: "22"
 
+        def buttonText = (attrs.buttonText) ?: ""
+        def buttonTextLeftPadding = (attrs.buttonTextLeftPadding) ?: "0"
+        def buttonTextTopPadding = (attrs.buttonTextTopPadding) ?: "0"
+
         def progressBarBoxImg = (attrs.progressBarBoxImg) ?: createPluginResourceSrc("images/swfupload/progressbar.gif")
         def progressBarImg = (attrs.progressBarImg) ?: createPluginResourceSrc("images/swfupload/progressbg_green.gif")
         def progressBarHeight = (attrs.progressBarHeight) ?: "12"
@@ -94,6 +98,13 @@ class SuperFileUploadTagLib {
         out << "file_upload_limit: \"$fileUploadLimit\",\n"
 
         out << 'button_placeholder_id : "swfupload_btn",\n'
+
+        if (!buttonText.isEmpty()) {
+            out << "button_text : \"${buttonText}\",\n"
+            out << "button_text_left_padding : ${buttonTextLeftPadding},\n"
+            out << "button_text_top_padding : ${buttonTextTopPadding},\n"
+        }
+
         out << "button_image_url : \"$buttonUrl\",\n"
         out << "button_width: $buttonWidth,\n"
         out << "button_height: $buttonHeight,\n"
