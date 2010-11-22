@@ -26,14 +26,13 @@ function swfUploadLoaded() {
     
 	var control = document.getElementById("swfupload_control");
 	var tempParent = document.createElement("span");
-	var elementsString = '<input id="swfupload_uploaded_file_id" type="hidden" name="uploadedFileId"><input id="swfupload_text" ' + this.customSettings.textbox_class + ' type="text" disabled="disabled">';
+	var elementsString = '<input id="swfupload_uploaded_file_id" type="hidden" name="uploadedFileId" /><input id="swfupload_text" ' + this.customSettings.textbox_class + ' type="text" disabled="disabled" size="30" />'
 	tempParent.innerHTML = elementsString;
 	control.appendChild(tempParent, control.firstChild);
 
 	updateProgressBar(0);
 
 	swfUploadControlActive = true;
-
 }
 
 function fileDialogStart() {
@@ -52,7 +51,11 @@ function fileDialogComplete(numFilesSelected, numFilesQueued) {
 function fileQueued(file) {
     try {
         var txtFileName = document.getElementById("swfupload_text");
-        txtFileName.value = file.name;
+
+        var txtFileNameVal = file.name + " (" + this.getStats().files_queued + " total)"
+
+        txtFileName.value = txtFileNameVal
+        txtFileName.size = txtFileNameVal.length + 1
     } catch (e) {
     }
 }
