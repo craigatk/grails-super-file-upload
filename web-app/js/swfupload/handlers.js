@@ -100,7 +100,7 @@ function uploadSuccess(file, serverData) {
             this.customSettings.upload_successful = false;
         } else {
             this.customSettings.upload_successful = true;
-            document.getElementById("swfupload_uploaded_file_id").value = serverData;
+            document.getElementById("swfupload_uploaded_file_id").value += serverData + ";";
         }
 
     } catch (e) {
@@ -109,7 +109,13 @@ function uploadSuccess(file, serverData) {
 
 function uploadComplete(file) {
     try {
-        if (this.customSettings.upload_successful) {
+        if (this.getStats().files_queued > 0) {
+            this.startUpload();
+        } else {
+			var uploadForm = document.getElementById(this.customSettings.formId);
+            uploadForm.submit();
+		}
+        /*if (this.customSettings.upload_successful) {
             try {
                 var uploadForm = document.getElementById(this.customSettings.formId);
                 uploadForm.submit();
@@ -118,7 +124,7 @@ function uploadComplete(file) {
             }
         } else {
             alert("There was a problem with the upload.\nThe server did not accept it.");
-        }
+        }*/
     } catch (e) {
     }
 }

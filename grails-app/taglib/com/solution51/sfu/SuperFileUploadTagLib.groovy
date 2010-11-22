@@ -72,6 +72,8 @@ class SuperFileUploadTagLib {
 
         def cssClass = (attrs.cssClass) ? "class=\"$attrs.cssClass\"" : ""
 
+        def fileUploadLimit = (attrs.uploadLimit) ?: "10"
+
         writeJavascriptLibs(useEmbeddedJquery)
 
         out << "\n\n"
@@ -89,6 +91,7 @@ class SuperFileUploadTagLib {
         out << "flash_url : \"$swfUploadFlash\",\n"
         out << "file_size_limit : \"$fileSize MB\",\n"
         out << "file_post_name: \"$paramName\",\n"
+        out << "file_upload_limit: \"$fileUploadLimit\",\n"
 
         out << 'button_placeholder_id : "swfupload_btn",\n'
         out << "button_image_url : \"$buttonUrl\",\n"
