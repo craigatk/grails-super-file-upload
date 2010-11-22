@@ -6,7 +6,7 @@ class SfuUploadController {
     def index = { }
 
     def upload = {
-        def uploadedFiles = superFileUploadService.getUploadedFiles(params)
+        def uploadedFiles = superFileUploadService.getUploadedFiles(params, request)
 
         def uploadedFileNames = new StringBuffer()
 

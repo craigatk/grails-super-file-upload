@@ -1,7 +1,7 @@
 package com.solution51.sfu
 
-import org.codehaus.groovy.grails.commons.ConfigurationHolder
 import com.solutions51.sfu.UploadedFile
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
 /* Copyright 2009-2011 the original author or authors.
  *
@@ -40,20 +40,39 @@ class SuperFileUploadService {
         return new File(getTempUploadDirectoryConfig())
     }
 
-    List<UploadedFile> getUploadedFiles(params) {
-        String uploadFilenameLine = params.uploadedFileId
-
-        String[] uploadFilenamePairs = uploadFilenameLine.split(";")
-
+    List<UploadedFile> getUploadedFiles(params, request) {
         List<UploadedFile> uploadedFiles = new ArrayList<UploadedFile>()
 
-        for (filenamePair in uploadFilenamePairs) {
-            String[] filenameParts = filenamePair.split(":")
+        String uploadFilenameLine = params.uploadedFileId
 
-            uploadedFiles.add(new UploadedFile(savedFile: getTempUploadFile(filenameParts[0]), originalFileName: filenameParts[1]))
+        if (uploadFilenameLine) {
+            String[] uploadFilenamePairs = uploadFilenameLine.split(";")
+
+            for (filenamePair in uploadFilenamePairs) {
+                String[] filenameParts = filenamePair.split(":")
+
+                uploadedFiles.add(new UploadedFile(savedFile: getTempUploadFile(filenameParts[0]), originalFileName: filenameParts[1]))
+            }
+        } else {
+            // File was not uploaded by flash
+
+            def fileStream = request.getFile('sfuFile')
+
+            def originalFileName = fileStream.getOriginalFilename()
+            def savedFile = saveFile(fileStream)
+
+            uploadedFiles.add(new UploadedFile(savedFile: savedFile, originalFileName: originalFileName))
         }
 
         return uploadedFiles
+    }
+
+    File saveFile(fileStream) {
+        def filename = new UUID(System.currentTimeMillis(), System.currentTimeMillis() * System.currentTimeMillis()).toString()
+        File file = new File(filename, getTempUploadDirectory())
+        fileStream.transferTo(file);
+
+        return file
     }
 
     private String getTempUploadDirectoryConfig() {

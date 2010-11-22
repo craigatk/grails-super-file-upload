@@ -3,7 +3,7 @@
     <title>Multi-File Upload</title>
     <meta name="layout" content="main" />
 
-    <sfu:generateConfiguration fileSize="30" form="bookForm" buttonImageFile="/XPButtonNoText_61x22.png" buttonWidth="61" buttonHeight="22" buttonText="Browse" buttonTextLeftPadding="8" buttonTextTopPadding="1"/>
+    <sfu:generateConfiguration fileSize="30" form="bookForm" buttonImageFile="/XPButtonNoText_61x22.png" buttonWidth="61" buttonHeight="22" buttonText="Browse" buttonTextLeftPadding="8" buttonTextTopPadding="1" fileUploadLimit="30"/>
   </head>
   <body>
     <form id="bookForm" name="bookForm" action="upload" onsubmit="return sfuSubmitForm(this);">

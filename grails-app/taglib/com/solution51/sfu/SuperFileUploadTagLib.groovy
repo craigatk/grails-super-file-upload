@@ -76,7 +76,7 @@ class SuperFileUploadTagLib {
 
         def cssClass = (attrs.cssClass) ? "class=\"$attrs.cssClass\"" : ""
 
-        def fileUploadLimit = (attrs.uploadLimit) ?: "10"
+        def fileUploadLimit = (attrs.fileUploadLimit) ?: "10"
 
         writeJavascriptLibs(useEmbeddedJquery)
 

@@ -39,10 +39,10 @@ class SfuRecieverController {
         if (!fileStream?.empty) {
             try {
                 def originalFileName = fileStream.getOriginalFilename()
-                def filename = new UUID(System.currentTimeMillis(), System.currentTimeMillis() * System.currentTimeMillis()).toString()
-                File file = new File(filename, superFileUploadService.getTempUploadDirectory());
-                fileStream.transferTo(file);
-                render "${filename}:${originalFileName}"
+                
+                File file = superFileUploadService.saveFile(fileStream)
+
+                render "${file.getName()}:${originalFileName}"
                 return;
             } catch (Exception e) {
                 log.error("Failed to upload file with SFU",e)
