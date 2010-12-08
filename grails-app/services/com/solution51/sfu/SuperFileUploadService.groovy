@@ -64,8 +64,6 @@ class SuperFileUploadService {
 
                 uploadedFiles.add(new UploadedFile(savedFile: savedFile, originalFileName: originalFileName))
             }
-
-            uploadedFiles.add(new UploadedFile(savedFile: savedFile, originalFileName: originalFileName))
         }
 
         return uploadedFiles
