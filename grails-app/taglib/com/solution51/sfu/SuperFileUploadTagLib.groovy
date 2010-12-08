@@ -183,16 +183,13 @@ class SuperFileUploadTagLib {
 
         jsUtilSrc = createPluginResourceSrc("js/swfupload/progressbar/jquery.progressbar.js")
         out << "<script type=\"text/javascript\" src=\"$jsUtilSrc\"></script>\n"
-
-
     }
 
     def createResourceSrc(dirName, fileName) {
-        return g.createLinkTo(dir: dirName, file: fileName)
+        return g.resource(dir: dirName, file: fileName)
     }
 
     def createPluginResourceSrc(fileName) {
-        return g.createLinkTo(dir: pluginContextPath, file: fileName)
+        return g.resource(dir: pluginContextPath, file: fileName)
     }
-
 }

@@ -1,13 +1,12 @@
 var swfUploadControlActive = false;
-var filesQueued = 0;
 
 function sfuSubmitForm(form) {
     try {
 		if(swfUploadControlActive == true) {
-            if (filesQueued > 0) {
+            if (swfu.getStats().files_queued > 0) {
                 document.getElementById("swfupload_progressBar").style.display = "block";
 
-                this.startUpload();
+                swfu.startUpload();
 
                 return false;
             } else {
@@ -63,8 +62,6 @@ function fileQueued(file) {
 
         txtFileName.value = txtFileNameVal
         txtFileName.size = txtFileNameVal.length + 1
-
-        filesQueued += 1;
     } catch (e) {
     }
 }
