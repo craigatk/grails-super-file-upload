@@ -58,8 +58,12 @@ class SuperFileUploadService {
 
             def fileStream = request.getFile('sfuFile')
 
-            def originalFileName = fileStream.getOriginalFilename()
-            def savedFile = saveFile(fileStream)
+            if (fileStream != null) {
+                def originalFileName = fileStream.getOriginalFilename()
+                def savedFile = saveFile(fileStream)
+
+                uploadedFiles.add(new UploadedFile(savedFile: savedFile, originalFileName: originalFileName))
+            }
 
             uploadedFiles.add(new UploadedFile(savedFile: savedFile, originalFileName: originalFileName))
         }

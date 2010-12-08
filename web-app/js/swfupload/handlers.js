@@ -1,11 +1,18 @@
 var swfUploadControlActive = false;
+var filesQueued = 0;
 
 function sfuSubmitForm(form) {
     try {
-		if(swfUploadControlActive == true){
-			document.getElementById("swfupload_progressBar").style.display = "block";
-			swfu.startUpload();
-			return false;
+		if(swfUploadControlActive == true) {
+            if (filesQueued > 0) {
+                document.getElementById("swfupload_progressBar").style.display = "block";
+
+                this.startUpload();
+
+                return false;
+            } else {
+                return true;
+            }
 		}else{
 			return true;
 		}
@@ -56,6 +63,8 @@ function fileQueued(file) {
 
         txtFileName.value = txtFileNameVal
         txtFileName.size = txtFileNameVal.length + 1
+
+        filesQueued += 1;
     } catch (e) {
     }
 }
