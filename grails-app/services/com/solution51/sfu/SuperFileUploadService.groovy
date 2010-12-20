@@ -58,7 +58,7 @@ class SuperFileUploadService {
 
             def fileStream = request.getFile('sfuFile')
 
-            if (fileStream != null) {
+            if (fileStream != null && fileStream.size > 0) {
                 def originalFileName = fileStream.getOriginalFilename()
                 def savedFile = saveFile(fileStream)
 
