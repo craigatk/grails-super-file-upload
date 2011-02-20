@@ -1,4 +1,5 @@
 var swfUploadControlActive = false;
+var numFilesSelected = 0;
 
 function sfuSubmitForm(form) {
     try {
@@ -42,8 +43,7 @@ function swfUploadLoaded() {
 }
 
 function fileDialogStart() {
-    var txtFileName = document.getElementById("swfupload_text");
-    txtFileName.value = "";
+
     try{
         this.cancelUpload();
         this.setButtonDisabled(false);
@@ -56,9 +56,15 @@ function fileDialogComplete(numFilesSelected, numFilesQueued) {
 
 function fileQueued(file) {
     try {
+        //var numFiles = this.getStats().files_queued;
+
+        numFilesSelected = numFilesSelected + 1;
+
+        var numFiles = numFilesSelected;
+
         var txtFileName = document.getElementById("swfupload_text");
 
-        var txtFileNameVal = file.name + " (" + this.getStats().files_queued + " total)"
+        var txtFileNameVal = file.name + " (" + numFiles + " total)"
 
         txtFileName.value = txtFileNameVal
         txtFileName.size = txtFileNameVal.length + 1
